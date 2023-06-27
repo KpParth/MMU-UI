@@ -1,0 +1,59 @@
+<!-- {{cardioVascularSystemForm.value | json}} -->
+<div class="row m-t-20" [formGroup]='cardioVascularSystemForm'>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <label class="control-label" for="cardioVascularSystem">{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.jugularVenousPressure}}</label>
+    <div class="clearfix"></div>
+    <md-radio-group name='jugularVenousPulse_JVP' formControlName="jugularVenousPulse_JVP">
+      <md-radio-button color='primary' value="Normal">{{currentLanguageSet?.common?.normal}}</md-radio-button>
+      <md-radio-button color='primary' value="Elevated">{{currentLanguageSet?.common?.elevated}}</md-radio-button>
+    </md-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <md-form-field class="input-full-width" class="textarea-full-width">
+      <textarea mdInput allowText="textAreaValidator" defaultNull mdTextareaAutosize name='apexbeatLocation' formControlName="apexbeatLocation" placeholder="{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.apexBeatLocation}}" maxlength="300"></textarea>
+    </md-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <md-form-field class="input-full-width" class="textarea-full-width">
+      <textarea mdInput allowText="textAreaValidator" defaultNull mdTextareaAutosize name='apexbeatType' formControlName="apexbeatType" placeholder="{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.apexBeatType}}" maxlength="300"></textarea>
+    </md-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+    <md-form-field class="input-full-width" class="textarea-full-width">
+      <textarea mdInput allowText="textAreaValidator" defaultNull mdTextareaAutosize name='firstHeartSound_S1' formControlName="firstHeartSound_S1" placeholder="{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.firstHeartSound}}" maxlength="300"></textarea>
+    </md-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+    <md-form-field class="input-full-width" class="textarea-full-width">
+      <textarea mdInput allowText="textAreaValidator" defaultNull mdTextareaAutosize name='secondHeartSound_S2' formControlName="secondHeartSound_S2" placeholder="{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.secondHeartSound}}" maxlength="300"></textarea>
+    </md-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+    <md-form-field class="input-full-width" class="textarea-full-width">
+      <textarea mdInput allowText="textAreaValidator" defaultNull mdTextareaAutosize name='additionalHeartSounds' formControlName="additionalHeartSounds" placeholder="{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.otherHeartSounds}}" maxlength="300"></textarea>
+    </md-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <label class="control-label" for="cardioVascularSystem">{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.murmurs}}</label>
+    <div class="clearfix"></div>
+    <md-radio-group name='murmurs' formControlName="murmurs">
+      <md-radio-button color='primary' value="Present">{{currentLanguageSet?.common?.present}}</md-radio-button>
+      <md-radio-button color='primary' value="Absent">{{currentLanguageSet?.common?.absent}}</md-radio-button>
+    </md-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <label class="control-label" for="cardioVascularSystem">{{currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic?.cardioForANC_OPD_PNC?.pericardialrub}}</label>
+    <div class="clearfix"></div>
+    <md-radio-group name='pericardialRub' formControlName="pericardialRub">
+      <md-radio-button color='primary' value="Present">{{currentLanguageSet?.common?.present}}</md-radio-button>
+      <md-radio-button color='primary' value="Absent">{{currentLanguageSet?.common?.absent}}</md-radio-button>
+    </md-radio-group>
+  </div>
+</div>

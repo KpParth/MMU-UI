@@ -1,0 +1,15 @@
+<md-accordion [formGroup]='patientVisitForm'>
+  <md-expansion-panel expanded="true">
+    <md-expansion-panel-header>
+      <h5> {{currentLanguageSet?.nurseData?.visitDetails}}</h5>
+    </md-expansion-panel-header>
+    <patient-visit-details [mode]="mode" [patientVisitDetailsForm]='patientVisitForm.controls.patientVisitDetailsForm'></patient-visit-details>
+  </md-expansion-panel>  
+  
+  <md-expansion-panel>
+    <md-expansion-panel-header>
+      <h5> {{currentLanguageSet?.tmcConfirmation}} </h5>
+    </md-expansion-panel-header>
+    <app-tmcconfirmation [mode]="mode" [tmcConfirmationFormsGroup]='patientVisitForm.controls.tmcConfirmationForm' [patientVisitDetailsForm]='patientVisitForm.controls.patientVisitDetailsForm'></app-tmcconfirmation>
+  </md-expansion-panel>  
+</md-accordion>

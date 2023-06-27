@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row col-xs-12">
+    <h2 class="text-center">{{currentLanguageSet?.pncData?.pnc}}</h2>
+    <hr/>    
+  </div>
+  <div class="row m-t-10">
+    <div class="col-xs-12">
+      <h4>{{currentLanguageSet?.casesheet?.pncDetails}}</h4>
+    </div>
+
+    <div class="col-xs-12">
+      <table class="table table-no-border casesheet-table" aria-describedby="pncCasesheet">
+
+        <tr>
+          <th id="typeofDelivery"> {{currentLanguageSet?.pncData?.typeofDelivery}}:</th>
+          <td> {{ pNCCaseSheetData?.deliveryType }} </td>
+          <th id="placeofDelivery"> {{currentLanguageSet?.pncData?.placeofDelivery}} :</th>
+          <td> {{ pNCCaseSheetData?.deliveryPlace}} </td>
+        </tr>
+        <tr>
+          <th id="dateofDelivery"> {{currentLanguageSet?.pncData?.dateofDelivery}}:</th>
+          <td> {{ pNCCaseSheetData?.dateOfDelivery }} </td>
+          <th id="deliveryComplication"> {{currentLanguageSet?.pncData?.deliveryComplication}}:</th>
+          <td> {{ pNCCaseSheetData?.deliveryComplication}} </td>
+        </tr>
+
+        <tr>
+          <th id="outcomeofpregnancy"> {{currentLanguageSet?.casesheet?.outcomeDelivery}}:</th>
+          <td> {{ pNCCaseSheetData?.pregOutcome }} </td>
+          <th id="postNatalComplication"> {{currentLanguageSet?.casesheet?.postNatal}}:</th>
+          <td> {{ pNCCaseSheetData?.postNatalComplication}} </td>
+        </tr>
+
+        <tr>
+          <th id="gestationalAgeofNewborn"> {{currentLanguageSet?.pncData?.gestationalAgeofNewborn}}:</th>
+          <td> {{ pNCCaseSheetData?.gestationName }} </td>
+          <th id="birthWeight"> {{currentLanguageSet?.casesheet?.birthWeight}}:</th>
+          <td> {{ pNCCaseSheetData?.birthWeightOfNewborn}} </td>
+        </tr>
+
+        <tr>
+          <th id="newBornHealthStatus"> {{currentLanguageSet?.pncData?.newBornHealthStatus}}:</th>
+          <td> {{ pNCCaseSheetData?.newBornHealthStatus }} </td>
+          <td colspan="2"> </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

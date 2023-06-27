@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row m-t-20">
+    <form [formGroup]="reportForm">
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg- box">
+        <md-select class="input-full-width" name='report' formControlName="report" placeholder="{{currentLanguageSet?.report}}" (change)='checkReport()' required>
+          <md-option *ngFor="let report of reportMaster" [value]="report">
+            {{report.reportName}}
+          </md-option>
+        </md-select>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+        <md2-datepicker [openOnFocus]="true" class="input-full-width" name='fromDate' formControlName="fromDate" placeholder="{{currentLanguageSet?.fromDate}}" [max]='today' (change)='checkFromDate()' [disableFormControl]="!report" required></md2-datepicker>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+        <md2-datepicker [openOnFocus]="true" class="input-full-width" name='toDate' formControlName="toDate" placeholder="{{currentLanguageSet?.toDate}}" [max]='maxToDate' [min]='fromDate' (change)='checkToDate()' [disableFormControl]="!fromDate" required></md2-datepicker>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg- box">
+        <md-select class="input-full-width" name='van' formControlName="van" placeholder="{{currentLanguageSet?.van}}" [disableFormControl]="!toDate" required>
+          <md-option *ngFor="let van of vanMaster" [value]="van">
+            {{van.vehicalNo}}
+          </md-option>
+        </md-select>
+      </div>
+    </form>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-40 m-b-40">
+      <button md-raised-button color="primary" type="button" class="pull-right" [disabled]='!(reportForm.valid)' (click)="getReportData()">{{currentLanguageSet?.downloadReport}}</button>
+    </div>
+  </div>
+</div>

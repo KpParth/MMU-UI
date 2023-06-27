@@ -1,0 +1,16 @@
+#demographicsToggle {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: #ccc;
+    padding: 2px 3px 3px 3px;
+}
+.example-full-width {
+   /*min-width: 150px*/
+/* max-width: 500px;*/
+   /* width: 275px;*/
+    /*padding-left:20px;*/
+    width:100%;
+  }
+  .padding-text{
+      margin-top:1px ;
+  }

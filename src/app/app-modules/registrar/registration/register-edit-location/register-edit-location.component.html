@@ -1,0 +1,75 @@
+<div>
+    <div class="title info">
+        <h4>{{currentLanguageSet?.bendetails?.editLocation}}</h4>
+        <button class="pull-right close-btn" (click)="closeDialog()" md-icon-button>
+            <md-icon class="md-24">close</md-icon>
+        </button>
+    </div>
+</div>
+
+<div [formGroup]='demographicEditDetailsForm' class="formMargin">
+    <div class="panel-body">
+
+        <div class="clearfix"></div>
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.state}}"
+                        formControlName="stateID" [required]="true" (change)="onStateChange()">
+                        <md-option *ngFor="let state of statesList" [value]="state.stateID">
+                            {{state.stateName | titlecase }} </md-option>
+                    </md-select>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.districtTownCity}}"
+                        [required]="true" formControlName="districtID" (change)="onDistrictChange()">
+                        <md-option *ngFor="let district of districtList" [value]="district.districtID">
+                            {{district.districtName  | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]="'100%'" placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.taluk}}"
+                        [required]="true" formControlName="blockID" (change)="onSubDistrictChange()">
+                        <md-option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict.blockID">
+                            {{subDistrict.blockName  | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <div class="select-container">
+          <md-select class="p-t-12 m-t-20" [style.width]="'100%'" placeholder="
+          {{currentLanguageSet?.ro?.locInfo?.street}}" [required]="true"  formControlName="villageID" (change)="onVillageChange()">
+              <md-option *ngFor="let village of villageList" [value]="village.districtBranchID">{{village.villageName  | titlecase }} </md-option>
+          </md-select>
+          
+      </div>
+  </div>
+       
+            
+          
+
+            <div class="pull-right break">
+                <br>
+                <br>
+                <button md-raised-button color="primary" type="submit" class="input-full-width"
+                    [disabled]="demographicEditDetailsForm.invalid" (click)="onSubmitEditLocation()">{{currentLanguageSet?.common?.ok}}</button>
+            </div>
+            <div class="pull-right cancel">
+                <br>
+                <br>
+                <button md-raised-button color="primary" type="submit" class="input-full-width" (click)="closeDialog()">
+                    {{currentLanguageSet?.common?.cancel}}</button>
+            </div>
+        </div>
+    </div>
+</div>

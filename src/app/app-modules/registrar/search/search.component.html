@@ -1,0 +1,131 @@
+<section class="row" style="margin-top: 0.5%;">
+  <section class="col-md-8">
+    <div class="container-fluid searchBox">
+      <div class="row">
+        <div class="col-11 col-lg-11 col-sm-11 col-md-11 col-xs-11" style="padding:0; border-right: 1px solid lightgray; ">
+          <input autocomplete="off" id="searchbox" autofocus searchPattern maxlength=12 placeholder="{{currentLanguageSet?.common?.lookForBeneficiaryIDorPhonenumberhere}}"
+            class="pull-left search_textbox" [(ngModel)]="quicksearchTerm" (keyup.enter)="identityQuickSearch(quicksearchTerm)"
+          />
+        </div>
+        <div class="col-1 col-lg-1 col-sm-1 col-md-1 col-xs-1" style=" padding-left: 0;">
+          <button class="search_button pull-right" (click)="identityQuickSearch(quicksearchTerm)" tooltip="{{currentLanguageSet?.quickSearch}}">
+            <md-icon class="material-icons search_icon">search</md-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="col-md-4 ">
+    <section class="row search-button-container">
+      <button md-raised-button style="display:none " class="btn btn-link " data-toggle="modal " data-target="#fingerPrintPage "
+        tooltip="{{currentLanguageSet?.common?.fingerPrintSearch}}">{{currentLanguageSet?.common?.fingerPrintSearch}}</button>
+      <button md-raised-button class="btn btn-default cu-btn-default pull-right " (click)='navigateTORegistrar()'>
+        {{currentLanguageSet?.ro?.registration}}
+      </button>
+      <button md-raised-button class="btn btn-default pull-right adv-button" data-toggle="modal " (click)="openSearchDialog() ">{{currentLanguageSet?.bendetails?.advanceSearch}}</button>
+      <div id="fingerPrintPage " class="modal fade " role="dialog ">
+        <div class="modal-dialog ">
+          <div class="modal-content ">
+            <div class="modal-header ">
+              <button md-raised-button class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title ">{{currentLanguageSet?.common?.modalHeader}}</h4>
+            </div>
+            <div class="modal-body " style="background:#000; ">
+              <img src="assets/images/fingerprintScannerPage.png" alt=" ">
+            </div>
+            <div class="modal-footer ">
+              <button md-raised-button class="btn btn-default pull-right " data-dismiss="modal ">{{currentLanguageSet?.common?.close}}</button>
+              <button md-raised-button class="btn btn-default pull-right ">{{currentLanguageSet?.common?.clear}}</button>
+              <button md-raised-button class="btn btn-default pull-right " data-dismiss="modal ">{{currentLanguageSet?.common?.submit}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+</section>
+
+<div class="row spacer ">
+</div>
+
+<div class="row m-b-40">
+  <div class="col-sm-12 ">
+    <md-card>
+      <div *ngIf="beneficiaryList?.length> 0" class="pull-right">
+        <md-input-container id="filterbox" class="m-t-20-">
+          <input autocomplete="off" mdInput placeholder="{{currentLanguageSet?.common?.inTableSearch}}" #filterTerm (keyup)="filterBeneficiaryList(filterTerm.value)">
+          <md-icon mdSuffix>search</md-icon>
+        </md-input-container>
+      </div>
+      <div class="clearfix"></div>
+      <section class="table-responsive">
+        <table class="table table-striped " aria-describedby="searchBenResults">
+          <thead>
+
+            <tr>
+              <th id="sno">{{currentLanguageSet?.bendetails?.edit}}</th>
+              <th id="beneficiaryID">{{currentLanguageSet?.bendetails?.beneficiaryID}}</th>
+              <th id="beneficiaryName">{{currentLanguageSet?.bendetails?.beneficiaryName}}</th>
+              <th id="gender">{{currentLanguageSet?.bendetails?.gender}}</th>
+              <th id="age">{{currentLanguageSet?.bendetails?.age}}</th>
+              <th id="fatherName">{{currentLanguageSet?.bendetails?.fatherName}}</th>
+              <th id="district">{{currentLanguageSet?.bendetails?.district}}</th>
+              <th id="phoneNo">{{currentLanguageSet?.bendetails?.phoneNo}}</th>
+              <th id="registrationDate">{{currentLanguageSet?.bendetails?.registrationDate}}</th>
+              <th id="image">{{currentLanguageSet?.bendetails?.image}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template [ngIf]="!beneficiaryList">
+              <tr *ngFor="let row of blankTable">
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+              </tr>
+            </ng-template>
+            <tr *ngFor="let beneficiary of pagedList" class="table-hover">
+              <td>
+                <button tooltip="{{currentLanguageSet?.editBeneficiary}}" type="button" class="btn text-center " (click)="editPatientInfo(beneficiary)">
+                  <span class="fa fa-pencil cursorPointer fa-lg " aria-hidden="true "></span>
+                </button>
+              </td>
+              <!-- temporary benRegID we are showing as benID -->
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary?.beneficiaryID}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)" style="max-width:200px; word-break: break-word;">{{beneficiary?.benName | titlecase}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary.genderName | titlecase}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{(beneficiary.age == 'a year') ? '1 year': beneficiary.age}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary.fatherName | titlecase}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary.districtName | titlecase }} / {{beneficiary.villageName | titlecase}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary.phoneNo}}</td>
+              <td (click)="patientRevisited(beneficiary.benObject)">{{beneficiary.registeredOn}}</td>
+              <td (click)="patientImageView(beneficiary.beneficiaryRegID)" tooltip="{{currentLanguageSet?.tc?.image}}">
+                <img src="assets/images/Avatar-Profile_30X30.png " alt="image">
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <div *ngIf="filteredBeneficiaryList.length > 0" class="totalCount"> {{currentLanguageSet?.common?.totalCount}} : {{ filteredBeneficiaryList.length }}</div>
+              </td>
+              <td colspan="8">
+                <pagination class="pull-right" [boundaryLinks]="true" (pageChanged)="pageChanged($event)" *ngIf="filteredBeneficiaryList.length"
+                  [totalItems]="filteredBeneficiaryList.length" [itemsPerPage]="rowsPerPage" [maxSize]="rowsPerPage" [rotate]="rotate"
+                  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </md-card>
+  </div>
+</div>

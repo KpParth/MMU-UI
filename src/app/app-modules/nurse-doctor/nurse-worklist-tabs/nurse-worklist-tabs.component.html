@@ -1,0 +1,15 @@
+<div class="container-fluid">
+
+  <md-tab-group>
+
+    <md-tab label={{currentLanguageSet?.nurse_tabs?.visit}}>
+      <app-nurse-worklist></app-nurse-worklist>
+    </md-tab>
+
+    <md-tab label="{{currentLanguageSet?.referredToTC}}">
+      <app-nurse-reffered-worklist></app-nurse-reffered-worklist>
+    </md-tab>
+
+  </md-tab-group>
+
+</div>

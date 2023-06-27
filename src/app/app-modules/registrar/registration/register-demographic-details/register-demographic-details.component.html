@@ -1,0 +1,120 @@
+<div [formGroup]='demographicDetailsForm'>
+  
+    <div class="panel-body">
+     
+     <md-slide-toggle id="demographicsToggle" formControlName="checked" color="primary" class="pull-right" [checked]="demographicsEditEnabled" (change)="confirmEditDemographicsNew($event)" labelPosition="before"><span style="font-variant-caps: titling-caps; color: #14508c; font-weight: bold;">{{demographicsEditText}}</span></md-slide-toggle>
+        <div class="clearfix"></div>
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+               
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.state}}" formControlName="stateID" [required]="true" [disabled]="disableState">
+                        <md-option *ngFor="let state of statesList"   [value]="state.stateID">{{state.stateName | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+           <div  formArrayName='villages' class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
+                 <div  *ngFor="let village of demographicDetailsForm.controls['villages']['controls'];let i=index">
+                <div [formGroupName]='i'>
+                  
+                  
+                <md-form-field class="example-full-width">
+                    
+                    <input autocomplete="off" mdInput  type="text" mdInput placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.street}}" name="villageID" formControlName='villageID' [mdAutocomplete]="auto" (keyup)="suggestedVillageList(village,i)" >
+                
+     
+                <md-autocomplete #auto="mdAutocomplete" (optionSelected)="filterVillage($event.option.value, i);onChangeVillage($event.option.value)" [displayWith]="displayVillage">
+                    <md-option *ngFor="let village of suggestedvillageList[i]" [value]="village">
+                        {{village.villageName  | titlecase }}
+                    </md-option>
+                  </md-autocomplete>
+                
+                </md-form-field>
+                
+                  </div>
+                  </div>
+           </div>
+                  
+                   
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' "  placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.districtTownCity}}" [required]="true" formControlName="districtID" [disabled]="disableDistrict" >
+                        <md-option *ngFor="let district of districtList" [value]="district.districtID">{{district.districtName  | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]="'100%'" placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.taluk}}" [required]="true" formControlName="blockID" [disabled]="disableSubDistrict">
+                        <md-option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict.blockID">{{subDistrict.blockName  | titlecase }} </md-option>
+                    </md-select>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.zone}}" disabled="true" formControlName="zoneID">
+                        <md-option *ngFor="let zones of zonesList" [value]="zones.zoneID">{{zones.zoneName  | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.parkingPlace}}" disabled="true" formControlName="parkingPlace">
+                        <md-option *ngFor="let parkingPlace of parkingPlaceList" [value]="parkingPlace.parkingPlaceID">{{parkingPlace.parkingPlaceName | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="select-container">
+                    <md-select class="p-t-12 m-t-20" [style.width]=" '100%' " placeholder="
+                    {{currentLanguageSet?.casesheet?.servicePoint}}" disabled="true" formControlName="servicePoint">
+                        <md-option *ngFor="let servicePoint of servicePointList" [value]="servicePoint.servicePointID">{{servicePoint.servicePointName | titlecase }} </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
+                <md-form-field [style.width]=" '100%' ">
+                    <input autocomplete="off" mdInput placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.habitation}}" allowText="address" formControlName="habitation" maxlength="50">
+                </md-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20" >
+                <md-form-field [style.width]=" '100%' ">
+                    <input autocomplete="off" mdInput  placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.address1}}" allowText="address" formControlName="addressLine1" maxlength="50">
+                </md-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3  m-t-20">
+                <md-form-field [style.width]=" '100%' ">
+                    <input autocomplete="off" mdInput placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.address2}}" allowText="address" formControlName="addressLine2" maxlength="50">
+                </md-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3  m-t-20">
+                <md-form-field [style.width]=" '100%' ">
+                    <input autocomplete="off" mdInput placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.address3}}" allowText="address" formControlName="addressLine3" maxlength="50">
+                </md-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3  m-t-20">
+                <md-form-field [style.width]=" '100%' ">
+                    <input autocomplete="off" mdInput placeholder="
+                    {{currentLanguageSet?.ro?.locInfo?.pincode}}" allowText="number" maxlength="6" formControlName="pincode">
+                </md-form-field>
+            </div>
+        </div>
+    </div>
+    </div>
+

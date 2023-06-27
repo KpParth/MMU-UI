@@ -1,0 +1,39 @@
+<!-- {{ immunizationHistoryForm.value | json }} -->
+<div class="row m-t-20" [formGroup]="immunizationHistoryForm">
+  <table class="table table-bordered" formArrayName="immunizationList" aria-describedby="immunizationList">
+    <thead>
+      <tr>
+        <th class="col-xs-2" id="age">{{currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization?.age}}</th>
+        <th class="col-xs-2" id="Vaccines">{{currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization?.Vaccines}}</th>
+        <th class="col-xs-2" id="sctCode">{{currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine?.sctCode}}</th>
+        <th class="col-xs-2" id="Status">{{currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization?.Status}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-immunization [ngForOf]="immunizationHistoryForm.controls['immunizationList']['controls']" let-i="index">
+        <ng-container [formGroupName]="i">
+          <tr>
+            <td [rowSpan]="immunization.value.vaccines.length+1">{{ immunization.value.defaultReceivingAge }}</td>
+            <td colspan="4">
+              <span class="pull-right">
+                <md-checkbox [checked]='checkSelectALL[i]' [id]="'selectAll'+ i" (change)="selectAll($event.checked, i)" color="primary"></md-checkbox>
+                {{currentLanguageSet?.common?.selectAll}}
+              </span>
+            </td>
+          </tr>
+          <ng-container formArrayName="vaccines">
+            <tr *ngFor="let vaccines of immunization.controls['vaccines'].controls; let j = index">
+              <ng-container [formGroupName]="j">
+                <td>{{ vaccines.value.vaccine }}</td>
+                <td>{{ vaccines.value.sctCode }}</td>
+                <td>
+                  <md-checkbox color="primary" name='status' formControlName="status"></md-checkbox>
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </tbody>
+  </table>
+</div>

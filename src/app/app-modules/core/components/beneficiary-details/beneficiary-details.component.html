@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img *ngIf="!beneficiary?.benImage" src="assets/images/default-avatar.gif" alt="Default Patient Image">
+        <img *ngIf="beneficiary?.benImage" [src]="beneficiary?.benImage" alt="Patient Image">
+        <table class="table profileData" aria-describedby="benDetails">
+            <tr style="font-size:14px; color:#000000">
+                <th id="beneficiaryName">{{current_language_set?.bendetails?.beneficiaryName}}: </th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{beneficiary?.beneficiaryName}} </td>
+            </tr>
+            <tr style="font-size:14px; color:#000000">
+                <th id="gender">{{current_language_set?.bendetails?.gender}} / {{current_language_set?.bendetails?.age}}: </th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{beneficiary?.genderName}} / {{beneficiary?.age}} &nbsp;{{ beneficiary?.ageUnit}}</td>
+            </tr>
+            <tr style="font-size:14px; color:#000000">
+                <th id="beneficiaryID">{{current_language_set?.bendetails?.beneficiaryID}}:</th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{beneficiary?.beneficiaryID}} </td>
+            </tr>            
+            <tr style="font-size:14px; color:#000000">
+                <th id="registrationDate">{{current_language_set?.bendetails?.registrationDate}}: </th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{beneficiary?.createdDate | date: 'dd/MM/yyyy, h:mm a'}} </td>
+            </tr>
+            <tr style="font-size:14px; color:#000000">
+                <th id="visitDate">{{current_language_set?.bendetails?.visitDate}}: </th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{ today | date: 'dd/MM/yyyy, h:mm a'}} </td>
+            </tr>
+            <tr style="font-size:14px; color:#000000">
+                <th id="district">{{current_language_set?.bendetails?.district}}: </th>
+            </tr>
+            <tr style="color:#595959;  font-size:14px">
+                <td>{{beneficiary?.districtName}} / {{beneficiary?.villageName}} </td>
+            </tr>
+            
+           
+        </table>
+    </div>
+</div>

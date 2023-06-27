@@ -1,0 +1,34 @@
+
+
+.info {
+    background: #0277bd;
+}
+
+.title {
+    margin: 0px;
+    padding: 15px 24px 15px;
+    color: white;
+}
+
+.title h4 {
+    display: inline-block;
+}
+
+
+
+.close-btn {
+    color: white !important;
+}
+
+.cancel{
+    
+    margin-right: 15px;
+}
+/*.break{
+
+margin-right: 50px;
+}*/
+.formMargin{
+    margin-right: 30px;
+    margin-left: 30px;
+}

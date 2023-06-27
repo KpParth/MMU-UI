@@ -1,0 +1,11 @@
+.norecord {
+    text-align: center;
+}
+
+md-card {
+    width: max-content;
+}
+
+.overflow {
+    overflow-x: auto;
+}

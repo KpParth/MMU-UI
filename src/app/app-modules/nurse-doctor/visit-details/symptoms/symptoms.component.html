@@ -1,0 +1,36 @@
+<div class="row m-t-20" [formGroup]="patientCovidForm">
+ 
+       <div class = "col-xs-12 col-sm-8 col-md-6 col-lg-5 box" *ngIf="!sympFlag">
+        <md-select
+        [style.width]="'100%'"
+        multiple
+        (change)="symptomSelected()"
+        id="symptom"
+        placeholder="{{currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms?.symptoms}}"
+        name="symptom"
+        formControlName="symptom"
+       required="true"
+      >
+        <md-option
+        *ngFor="let symp of symptomsList"
+          [value]="symp"
+       >
+          {{ symp }}
+        </md-option>
+      </md-select>
+       </div>
+
+       <div class = "col-xs-12 col-sm-8 col-md-6 col-lg-5 box"  *ngIf="sympFlag">
+       <md-form-field class="input-full-width">
+        <input
+          autocomplete="off"
+          mdInput
+      
+          placeholder="{{currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms?.symptoms}}"
+          value="{{covidSymptoms}}"
+          disabled
+        />
+      </md-form-field>
+</div>
+       
+</div>
