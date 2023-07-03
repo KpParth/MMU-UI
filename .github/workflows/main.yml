@@ -1,4 +1,4 @@
-name: Static Code Analysis and Package
+name: Static Code Analysis and Package Prod
 on:
   push:
     branches: [ "develop" ]
